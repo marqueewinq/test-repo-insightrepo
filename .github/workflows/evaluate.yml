@@ -1,0 +1,16 @@
+name: Evaluate
+
+on:
+  repository_dispatch:
+    types: [evaluate-event]
+
+jobs:
+  evaluate-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use PR Number
+        run: |
+          echo "Using PR Number ${{ github.event.client_payload.pr_number }}"
